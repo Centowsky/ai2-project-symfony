@@ -63,7 +63,7 @@ class Measurement
 
     public function setDate(\DateTimeInterface $date): static
     {
-        $this->date = $date;
+        $this->date = $date ?? new \DateTime();
 
         return $this;
     }

@@ -1,0 +1,101 @@
+App\Entity\Location:
+  properties:
+    city:
+      - NotBlank:
+          message: "Location name must be specified"
+      - Length:
+          min: 3
+          max: 10
+          minMessage: "City name must be at least {{ limit }} characters long"
+          maxMessage: "City name cannot be longer than {{ limit }} characters"
+
+    country:
+      - NotBlank:
+          message: "Country name must be selected"
+
+    latitude:
+      - NotBlank:
+          message: "Latitude must be specified"
+      - Type:
+          type: "numeric"
+          message: "Latitude must be a valid number"
+      - Range:
+          min: -90
+          max: 90
+          notInRangeMessage: "Latitude must be between {{ min }} and {{ max }}"
+
+    longitude:
+      - NotBlank:
+          message: "Longitude must be specified"
+      - Type:
+          type: "numeric"
+          message: "Longitude must be a valid number"
+      - Range:
+          min: -180
+          max: 180
+          notInRangeMessage: "Longitude must be between {{ min }} and {{ max }}"
+
+App\Entity\Measurement:
+  properties:
+    date:
+      - NotBlank:
+          message: "Please select a measurement date."
+      - Type:
+          type: "DateTime"
+          message: "Please provide a valid date in the format YYYY-MM-DD."
+
+    temperature:
+      - NotBlank:
+          message: "Please enter the temperature."
+      - Type:
+          type: "numeric"
+          message: "Temperature must be a number."
+      - Range:
+          min: -100
+          max: 100
+          notInRangeMessage: "Temperature must be between {{ min }} and {{ max }} °C."
+
+    air_humidity:
+      - NotBlank:
+          message: "Please enter the air humidity."
+      - Type:
+          type: "numeric"
+          message: "Air humidity must be a number."
+      - Range:
+          min: 0
+          max: 100
+          notInRangeMessage: "Air humidity must be between {{ min }} and {{ max }}%."
+
+    wind_speed:
+      - NotBlank:
+          message: "Please enter the wind speed."
+      - Type:
+          type: "numeric"
+          message: "Wind speed must be a number."
+      - Range:
+          min: 0
+          max: 300
+          notInRangeMessage: "Wind speed must be between {{ min }} and {{ max }} km/h."
+
+    wind_direction:
+      - NotBlank:
+          message: "Please select a wind direction."
+
+    pressure:
+      - NotBlank:
+          message: "Please enter the pressure."
+      - Type:
+          type: "numeric"
+          message: "Pressure must be a number."
+      - Range:
+          min: 800
+          max: 1100
+          notInRangeMessage: "Pressure must be between {{ min }} and {{ max }} hPa."
+
+    cloud_cover:
+      - NotBlank:
+          message: "Please select the cloud cover."
+
+    location:
+      - NotBlank:
+          message: "Please select a location."
