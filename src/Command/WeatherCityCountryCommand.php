@@ -40,7 +40,6 @@ class WeatherCityCountryCommand extends Command
         $countryCode = $input->getArgument('countryCode');
         $city = $input->getArgument('city');
 
-        // Search for the location based on country code and city name
         $location = $this->locationRepository->findOneBy(['country' => $countryCode, 'city' => $city]);
 
         if (!$location) {
@@ -48,7 +47,6 @@ class WeatherCityCountryCommand extends Command
             return Command::FAILURE;
         }
 
-        // Fetch the weather data
         $measurements = $this->weatherUtil->getWeatherForLocation($location);
 
         if (empty($measurements)) {
@@ -56,7 +54,6 @@ class WeatherCityCountryCommand extends Command
             return Command::SUCCESS;
         }
 
-        // Display the weather data
         foreach ($measurements as $measurement) {
             $output->writeln(sprintf(
                 "Location: %s\n" .
