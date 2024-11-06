@@ -73,6 +73,11 @@ class Measurement
         return $this->temperature;
     }
 
+    public function getFahrenheit(): float
+    {
+        return (float)$this->getTemperature() * 9 / 5 + 32;
+    }
+
     public function setTemperature(string $temperature): static
     {
         $this->temperature = $temperature;
